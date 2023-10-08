@@ -15,7 +15,7 @@ void min(int *arr,int n){
 void razvorot(char *str){
     int nac = 0, kon,n = 0;
     int *dliny =malloc(sizeof(int));;
-    for(int i = 0; i < strlen(str); i++){
+    for(int i = 1; i < strlen(str); i++){
         if(str[i] == ' ') {
             kon = i;
             dliny[n]=kon-nac-1;
@@ -30,7 +30,7 @@ void razvorot(char *str){
 
 
 int main(){
-    char str1[256], str2[256];
+    char str1[256], str2[256]= " ";
     gets(str1);
     strcat(str2,str1);
     str2[strlen(str2)] = ' ';
