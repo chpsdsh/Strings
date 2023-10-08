@@ -12,7 +12,7 @@ void min(int *arr,int n){
 }
 
 
-void razvorot(char *str){
+void shortword(char *str){
     int nac = 0, kon,n = 0;
     int *dliny =malloc(sizeof(int));;
     for(int i = 1; i < strlen(str); i++){
@@ -35,6 +35,6 @@ int main(){
     strcat(str2,str1);
     str2[strlen(str2)] = ' ';
     str2[strlen(str2)+1] = '\0';
-    razvorot(str2);
+    shortword(str2);
     return 0;
 }
