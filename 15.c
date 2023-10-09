@@ -27,7 +27,6 @@ int *game(char *chislo, char *answer) {
 
 
 int main(){
-
     char chislo[256],answer[256];
     gets(chislo);
     if (strlen(chislo) != 4 || povtor(chislo) != 4)
@@ -44,8 +43,7 @@ int main(){
         else{
             printf("bikov %d korov %d\n", game(chislo,answer)[0],game(chislo,answer)[1]);
         }
-
     }
-    puts("loss");
+    puts("LOSS");
     return 0;
 }
