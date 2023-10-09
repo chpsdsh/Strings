@@ -3,7 +3,7 @@
 
 
 int main(){
-    int k = 1,choise;
+    int choise;
     char podskazka[256],slovo[256],otv[256];
     gets(podskazka);
     gets(slovo);
@@ -17,10 +17,9 @@ int main(){
     printf("%s\n",otv);
     printf("0 - letter, 1 - word\n");
 
-    while(k>0){
+    for(int k = 0;k < 10; k++){
         char answer1[256];
         scanf_s("%d",&choise);
-
         if (choise == 0){
             gets(answer1);
             for(int i = 0; i < strlen(slovo);i++)
@@ -32,10 +31,11 @@ int main(){
             gets(answer1);
             if (strcmp(answer1,slovo)==0){
                 printf("WIN");
-                k=0;
+                return 0;
             }
-
         }
     }
+    puts("LOSS");
+    return 0;
 
 }
