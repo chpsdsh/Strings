@@ -1,57 +1,51 @@
 #include <stdio.h>
 #include <string.h>
+#include <malloc.h>
 
 
-int proverka(char *str){
-    int sm1 = 0,sm2 = 0;
-    if(strlen(str)%2 == 0){
-        for(int i = 0;i<strlen(str)/2;i++){
-            sm1 += (int)str[i];
-            sm2 += (int)str[strlen(str)-i-1];
+int povtor(char *result){
+    int cnt = 0;
+    for(int  i = 0; result[i]!='\0';i++)
+        if (strchr(result,result[i]) - result == i)
+            cnt++;
+    return cnt;
+}
 
-        }
+
+int *game(char *chislo, char *answer) {
+    int *bikkor = (int*)malloc(sizeof(int)*2);
+    bikkor[0] = 0;
+    bikkor[1] = 0;
+    for(int i = 0; i < strlen(chislo); i++){
+        if (strchr(chislo,answer[i]) - chislo == i)
+            bikkor[0] += 1;
+        else if (strchr(chislo,answer[i])!= NULL)
+            bikkor[1] += 1;
     }
-    if(sm1==sm2 && sm1!=0)
-        return 1;
-    else
-        return 0;
+    return bikkor;
 }
 
 
 int main(){
-    int k = 1,choise;
-    char podskazka[256],slovo[256],otv[256];
-    gets(podskazka);
-    gets(slovo);
-    for(int i = 0; i < strlen(slovo);i++){
-        otv[i]='*';
-        otv[i+1] = '\0';
-    }
-    for (int i = 0; i<25; i++)
+
+    char chislo[256],answer[256];
+    gets(chislo);
+    if (strlen(chislo) != 4 || povtor(chislo) != 4)
+        return 0;
+    for (int i = 0; i < 25; i++)
         printf("\n");
-    printf("%s\n",podskazka);
-    printf("%s\n",otv);
-    printf("0 - letter, 1 - word\n");
+    for(int i = 0;i < 10;i++){
+        gets(answer);
 
-    while(k>0){
-        char answer1[256];
-        scanf_s("%d",&choise);
-
-        if (choise == 0){
-            gets(answer1);
-            for(int i = 0; i < strlen(slovo);i++)
-                if(slovo[i] == answer1[0])
-                    otv[i] = slovo[i];
-            printf("%s\n",otv);
+        if(game(chislo, answer)[0]==4){
+            printf("WIN");
+            return 0;
         }
-        else if (choise == 1){
-            gets(answer1);
-            if (strcmp(answer1,slovo)==0){
-                printf("WIN");
-                k=0;
-            }
-
+        else{
+            printf("bikov %d korov %d\n", game(chislo,answer)[0],game(chislo,answer)[1]);
         }
+
     }
-
+    puts("loss");
+    return 0;
 }
