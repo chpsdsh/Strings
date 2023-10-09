@@ -2,22 +2,6 @@
 #include <string.h>
 
 
-int proverka(char *str){
-    int sm1 = 0,sm2 = 0;
-    if(strlen(str)%2 == 0){
-        for(int i = 0;i<strlen(str)/2;i++){
-            sm1 += (int)str[i];
-            sm2 += (int)str[strlen(str)-i-1];
-
-        }
-    }
-    if(sm1==sm2 && sm1!=0)
-        return 1;
-    else
-        return 0;
-}
-
-
 int main(){
     int k = 1,choise;
     char podskazka[256],slovo[256],otv[256];
