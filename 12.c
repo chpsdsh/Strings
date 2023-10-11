@@ -4,7 +4,12 @@
 
 int proverka(char *str){
     int flag = 1;
-    char keywords[][14]={"False", "await","else","import",	"pass","None","break","except",	"in","raise", "True",	"class","finally",	"is",	"return" ,"and", "continue", "for",	"lambda","try","as","def", "from", "nonlocal",	"while","assert","del","global","not",	"with","async","elif",	"if",	"or",	"yield"};
+    char keywords[][14]={"False", "await","else","import",	
+    "pass","None","break","except",	"in","raise", "True",	
+    "class","finally",	"is",	"return" ,"and", "continue",
+    "for",	"lambda","try","as","def", "from", "nonlocal",	
+    "while","assert","del","global","not",	
+    "with","async","elif",	"if",	"or",	"yield"};
     if((int)str[0]>=(int)'0' && (int)str[0]<=(int)'9')
         flag = 0;
     else{
